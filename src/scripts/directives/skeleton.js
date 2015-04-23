@@ -1,6 +1,11 @@
 'use strict';
-angular.module('tink.skeleton', [])
-  .directive('tinkSkeleton', [function () {
+(function(module) {
+  try {
+    module = angular.module('tink.skeleton');
+  } catch (e) {
+    module = angular.module('tink.skeleton', []);
+  }
+  module.directive('tinkSkeleton', [function () {
     return {
       restrict: 'EA',
       scope: {
@@ -20,3 +25,4 @@ angular.module('tink.skeleton', [])
       }
     };
   }]);
+})();
