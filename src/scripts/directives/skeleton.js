@@ -4,21 +4,19 @@ angular.module('tink.skeleton', [])
     return {
       restrict: 'EA',
       scope: {
-        offset: '@'
+        text: '@'
       },
-      template: '',
+      template: '<h1 class="h3 text-center">{{text}}</h1>',
       replace: true,
 
-      link: function(scope, element) {
+      link: function(scope) {
 
-        jQuery(document).ready(function($) {
+        // Do this on load
+        function initialize() {
+          console.log(scope.text);
+        }
 
-          // Do this on load
-          function initialize() {
-          }
-
-          initialize();
-        });
+        initialize();
       }
     };
   }]);
