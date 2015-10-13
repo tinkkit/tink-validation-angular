@@ -1,21 +1,56 @@
 <!doctype html>
-<html ng-app="tink.skeleton">
+<html ng-app="tink.validation">
 <head>
   <meta charset="utf-8">
   <title>Tink module</title>
   <meta name="description" content="">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimum-scale=1.0">
+  <link rel="stylesheet" href="styles/tink-fieldset.css">
   <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/tink-core/dist/tink.css" />
   <!-- endbower -->
 </head>
-<body>
+<body ng-controller="ctrl as ctrl">
 
-<tink-skeleton data-text="Skeleton is working fine!"></tink-skeleton>
+<!--ng-model-options="{ updateOn: 'blur' }"-->
+
+<div class="container">
+    <div class="row">
+      <div  class="the-fieldset col-xs-12 col-sm-10 col-sm-push-1 col-md-8 col-md-push-2 col-lg-6 col-lg-push-3">
+        <form name="form">
+
+          <tink-validation label="voornaam" information="Geef de voornaam van de gebruiker">
+            <input type="text" name="voornaam" placeholder="code van comité" ng-model="ctrl.comite.code" required />
+            <errors>
+              <span class="text-danger" data-ng-show="form.voornaam.$error.required">Dit veld mag niet leeg zijn.</span>
+            </errors>
+          </tink-validation>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  
 
 <!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
 <!-- endbower -->
 
-<script src="scripts/directives/skeleton.js"></script>
+<script>
+  angular.module('tink.validation',[]).controller('ctrl',function(){
+    var ctrl = this;
+    ctrl.comite = {code:'10'};
+  });
+  </script>
+
+<script src="scripts/directives/tink-validation-angular.js"></script>
 </body>
 </html>
