@@ -22,7 +22,7 @@ module.exports = function (grunt) {
     dist: 'dist',
     version: currentversion,
     module: require('./package.json').name,
-    domain: 'tink.skeleton'
+    domain: 'tink.validation'
   };
 
   // Define the configuration for all the tasks
@@ -402,7 +402,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'karma:build',
+    //'karma:build',
     'clean',
     'ngtemplates',
     'replace',
